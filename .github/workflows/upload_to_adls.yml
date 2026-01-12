@@ -38,35 +38,17 @@ jobs:
       - name: Upload GitHub (LTI-like) workbooks
         run: |
           LOAD_DATE=$(date +%F)
-      
-          SRC="extracts/contracts/github_workbooks"
-          if [ ! -d "$SRC" ]; then
-            echo "Directory not found: $SRC"
-            echo "Searching for github_workbooks..."
-            find extracts -maxdepth 5 -type d -name "github_workbooks" -print
-            exit 1
-          fi
-      
           az storage blob upload-batch \
             --account-name pvcstor \
             --destination "landing/github/entity=workbook/load_date=${LOAD_DATE}" \
-            --source "$SRC" \
+            --source "extracts/github_workbooks" \
             --auth-mode login
       
       - name: Upload SharePoint (historic) workbooks
         run: |
           LOAD_DATE=$(date +%F)
-      
-          SRC="extracts/contracts/sharepoint_workbooks"
-          if [ ! -d "$SRC" ]; then
-            echo "Directory not found: $SRC"
-            echo "Searching for sharepoint_workbooks..."
-            find extracts -maxdepth 5 -type d -name "sharepoint_workbooks" -print
-            exit 1
-          fi
-      
           az storage blob upload-batch \
             --account-name pvcstor \
             --destination "landing/sharepoint/entity=workbook/load_date=${LOAD_DATE}" \
-            --source "$SRC" \
+            --source "extracts/sharepoint_workbooks" \
             --auth-mode login
