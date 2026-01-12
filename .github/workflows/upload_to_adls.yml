@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - extracts/contracts/github_workbooks/**
-      - extracts/contracts/sharepoint_workbooks/**
+      - extracts/github_workbooks/**
+      - extracts/sharepoint_workbooks/**
 
 permissions:
   id-token: write
