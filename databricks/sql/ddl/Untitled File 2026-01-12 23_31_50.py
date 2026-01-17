@@ -1,1 +1,0 @@
-%sql SELECT sheet_name, count(*) FROM tp_finance.raw.github_sheet_rows GROUP BY sheet_name;
